@@ -14,13 +14,12 @@ def load_env():
     load_dotenv()
 
 
-selenoid_login = os.getenv("SELENOID_LOGIN")
-selenoid_pass = os.getenv("SELENOID_PASS")
-selenoid_url = os.getenv("SELENOID_URL")
-
-
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
+    selenoid_login = os.getenv("SELENOID_LOGIN")
+    selenoid_pass = os.getenv("SELENOID_PASS")
+    selenoid_url = os.getenv("SELENOID_URL")
+
     options = Options()
     selenoid_capabilities = {
         'browserName': 'chrome',
